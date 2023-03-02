@@ -1,0 +1,58 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("fg utilities", "DarkTheme")
+
+local tab = Window:NewTab("utilities")
+local sec = tab:NewSection("utilities")
+
+local name = game.Players.LocalPlayer.Name
+
+local v2g = Instance.new("Model", game.Workspace)
+v2g.Name = "hh.cc//==-+//"
+local h = Instance.new("Highlight")
+h.Parent = v2g
+h.Enabled = false
+local r = Instance.new("Model", game.Workspace)
+r.Name = "rraaare"
+local h2 = Instance.new("Highlight", r)
+h2.Enabled = false
+
+sec:NewButton("trinket esp", "lmao work in progress", function()
+    h.Enabled = not h.Enabled
+end)
+
+sec:NewButton("rare trinket esp", "lmao work in progress", function()
+    h2.Enabled = not h2.Enabled
+end)
+
+local espon = false
+
+sec:NewButton("esp", "view plrs and health etc", function()
+    if espon == true then return end
+    espon = true
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/JimmyTheDoggo/esp/main/source"))();
+end)
+
+while true do
+    for i, v in pairs(v2g:GetChildren()) do
+        if v:IsA("Part") then
+            v:Destroy()
+        end
+    end
+    for i2,v2 in pairs(game.Workspace.Thrown:GetChildren()) do
+        if v2.Name == "Part" and v2:FindFirstChild("Mesh") then
+            local c = v2:Clone()
+            c.Parent = v2g
+            v2.Mesh.Destroying:Connect(function()
+                c:Destroy()
+            end)
+        end
+        if v2:IsA("MeshPart") then
+            local c = v2:Clone()
+            c.Parent = r
+            v2.Destroying:Connect(function()
+                c:Destroy()
+            end)
+        end
+    end
+    wait(5)
+end
